@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>SS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+</head>
+
+<body>
+    
+    <!-- <input type="text" id="searchInput" placeholder="Enter your search query" value="sidemen"> -->
+    <div class="d-grid gap-2 col-9 mx-auto">
+        <button class="btn btn-danger btn-lg mx-250 my-5 fs-1" onclick="searchAndPlay()"><b>Start</b></button>
+    </div>
+    <b><h1 id="ep" style="margin-left: 750px;"></h1></b>
+    <br>
+    <br>
+    <iframe style="margin-left: 200px;" id="dynamicLink" width="1120" height="630" src="https://www.youtube.com/embed/NNePgYyI-Ns" SECURE_REFERRER_POLICY = "no-referrer-when-downgrade" referrerpolicy="no-referrer-when-downgrade" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+        let player;
+        let n=localStorage.getItem('n');
+        document.getElementById("ep").innerHTML = n;
+        
+    
+    
+        function searchAndPlay() {
+            // let storedN = localStorage.getItem('n');
+            // document.getElementById("ep").innerHTML = n;
+            const searchQuery = "swami samarth "+ n;
+            const apiKey = 'AIzaSyBT4m3rySjow3enhhevi9BYyX_XwxThRK0'; // Replace with your actual YouTube Data API v3 key
+            const maxResults = 1;
+
+            // Perform the YouTube search using the API
+            fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(searchQuery)}&type=video&maxResults=${maxResults}&key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.items.length > 0) {
+                        const videoId = data.items[0].id.videoId;
+                        const videoLink = `https://www.youtube.com/embed/${videoId}`;
+                        console.log('Link to the first video:', videoLink);
+                        // player.loadVideoById(videoId);
+
+                        document.getElementById('dynamicLink').src = videoLink;
+
+                    } else {
+                        console.log('No videos found.');
+                    }
+                })
+                .catch(error => {
+                    console.warn('Error fetching video:', error);
+                });
+            n++;
+            localStorage.setItem('n', n);
+        }
+    </script>
+</body>
+
+</html>
