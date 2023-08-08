@@ -34,8 +34,16 @@
                 const searchInput = document.getElementById('searchInput').value;
                 const myArray = searchInput.split("e/");
                 const videoId = myArray[1];
-                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                const embedUrl = `https://www.youtube.com/embed/${videoId}`;
                 document.getElementById('player').src = embedUrl;
+                const iframe = document.getElementById('player');
+                const iframeSrc = iframe.src;
+                if (iframeSrc!=null) {
+                    // Open the URL of the iframe's content in a new tab
+                    window.open(iframeSrc, '_self');
+                } else {
+                    console.error('The iframe does not have a valid source URL.');
+                }
             });
             
         </script>
