@@ -34,7 +34,7 @@
                 const searchInput = document.getElementById('searchInput').value;
                 const myArray = searchInput.split("e/");
                 const videoId = myArray[1];
-                const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
                 document.getElementById('player').src = embedUrl;
             });
             
