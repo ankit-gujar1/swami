@@ -34,7 +34,7 @@
                 const searchInput = document.getElementById('searchInput').value;
                 const myArray = searchInput.split("e/");
                 const videoId = myArray[1];
-                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1`;
                 document.getElementById('player').src = embedUrl;
                 const iframe = document.getElementById('player');
                 const iframeSrc = iframe.src;
@@ -44,7 +44,7 @@
                 } else {
                     console.error('The iframe does not have a valid source URL.');
                 }
-                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                // iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
             });
             
         </script>
