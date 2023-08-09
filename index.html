@@ -44,6 +44,7 @@
                 } else {
                     console.error('The iframe does not have a valid source URL.');
                 }
+                iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
             });
             
         </script>
