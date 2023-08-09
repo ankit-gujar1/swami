@@ -23,8 +23,8 @@
         </form>
         <br><br>
 <!--         <div id="playerContainer" class="ratio ratio-16x9"> -->
-            <iframe id="player" width="0" height="0" class="embed-responsive-item" src="" allowfullscreen></iframe>
-<!--         </div> -->
+            <iframe id="player" width="0" height="0" class="embed-responsive-item" src="" allow='autoplay' allowfullscreen></iframe>
+<!--         </div> ?autoplay=1" allow='autoplay' -->
 
 
         <script>
@@ -34,7 +34,7 @@
                 const searchInput = document.getElementById('searchInput').value;
                 const myArray = searchInput.split("e/");
                 const videoId = myArray[1];
-                const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
                 document.getElementById('player').src = embedUrl;
                 const iframe = document.getElementById('player');
                 const iframeSrc = iframe.src;
