@@ -2,58 +2,80 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdFreeYouTube</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdFreeYouTube</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+  <style>
+    /* #spin {
+  color:#DC4C64;
+} */
+    #spin:after {
+      content: "";
+      animation: spin 10s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        content: "Not ME";
+      }
+
+      33% {
+        content: "Definitely Not YOU";
+      }
+
+      66% {
+        content: "Only BITCHES want to see ADs";
+      }
+
+      100% {
+        content: "Not ME";
+      }
+    }
+  </style>
 </head>
 
 <body class="h-100 text-center text-bg-dark">
-    <main class="px-5 ">
-        <h1 class="my-5">Yep it's illegal</h1>
-        <form id="searchForm">
-            <!-- <label for="searchInput">Search YouTube:</label> -->
-            <div class="mb-3">
-                <label for="searchInput" class="form-label fs-4">Ad Free YouTube</label>
-                <input type="text" class="form-control" id="searchInput" aria-describedby="emailHelp"
-                    placeholder="Paste YouTube Video Link" required>
-            </div>
-            <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="submit">Search</button>
-        </form>
-        <br><br>
-<!--         <div id="playerContainer" class="ratio ratio-16x9"> -->
-            <iframe id="player" width="0" height="0" class="embed-responsive-item" src="" autoplay allowfullscreen allow="fullscreen"></iframe>
-<!--         </div> ?autoplay=1" allow='autoplay' -->
+  <main class="px-5 container">
+    <h1 class="mt-5">Yep it's illegal</h1>
+    <p class="lead my-3">Who want to see ADs? <br><span class="text-danger fw-normal" id="spin"></span></p>
+    <form id="searchForm">
+      <div class="mb-3">
+        <label for="searchInput" class="form-label fs-4">Ad Free YouTube</label>
+        <input type="text" class="form-control mt-3" id="searchInput" aria-describedby="emailHelp"
+          placeholder="Paste YouTube Video Link" required>
+      </div>
+      <button class="btn btn-lg btn-light fw-bold border-white bg-white" type="submit">Search</button>
+    </form>
+    <br><br>
+    <iframe id="player" width="0" height="0" class="embed-responsive-item" src="" autoplay allowfullscreen
+      allow="fullscreen"></iframe>
 
 
-        <script>
-            const form = document.getElementById('searchForm');
-            form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                const searchInput = document.getElementById('searchInput').value;
-                const myArray = searchInput.split("e/");
-                const videoId = myArray[1];
-                const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&fullscreen=1`;
-                document.getElementById('player').src = embedUrl;
-                const iframe = document.getElementById('player');
-                const iframeSrc = iframe.src;
-                if (iframeSrc!=null) {
-                    // Open the URL of the iframe's content in a new tab
-                    window.open(iframeSrc, '_self');
-                } else {
-                    console.error('The iframe does not have a valid source URL.');
-                }
-                // iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-            });
-            
-        </script>
-    </main>
-    </div>
-    <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-<script src="https://www.youtube.com/iframe_api"></script>
+    <script>
+      const form = document.getElementById('searchForm');
+      form.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const searchInput = document.getElementById('searchInput').value;
+        const myArray = searchInput.split("e/");
+        const videoId = myArray[1];
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&fullscreen=1`;
+        document.getElementById('player').src = embedUrl;
+        const iframe = document.getElementById('player');
+        const iframeSrc = iframe.src;
+        if (iframeSrc != null) {
+          window.open(iframeSrc, '_self');
+        } else {
+          console.error('The iframe does not have a valid source URL.');
+        }
+      });
+
+    </script>
+  </main>
+  </div>
+  <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 
 
 
