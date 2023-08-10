@@ -64,7 +64,7 @@
         const iframe = document.getElementById('player');
         const iframeSrc = iframe.src;
         if (iframeSrc != null) {
-          window.open(iframeSrc, '_self');
+          window.open(iframeSrc, '_blank');
         } else {
           console.error('The iframe does not have a valid source URL.');
         }
