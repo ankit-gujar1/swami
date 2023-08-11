@@ -33,6 +33,10 @@
         content: "Not ME";
       }
     }
+
+    #arrow {
+  display: none;
+}
   </style>
 </head>
 
@@ -53,13 +57,13 @@
     
     </div>
     <div class="ratio ratio-16x9">
-      <iframe id="player" width="560" height="315" class="embed-responsive-item" src="" autoplay allowfullscreen allow="fullscreen"></iframe>
+      <iframe id="player" width="560" height="315" class="embed-responsive-item" src="" autoplay allowfullscreen></iframe>
     </div>
 
-<div class="text-end">
+    <div id="arrow" class="text-end">
       <img src="white-arrow-png-41951.png" class="mx-4" alt="Responsive image">
     </div>
-    
+    </main>
     <script>
       const form = document.getElementById('searchForm');
       form.addEventListener('submit', function (event) {
@@ -71,15 +75,21 @@
         document.getElementById('player').src = embedUrl;
         const iframe = document.getElementById('player');
         const iframeSrc = iframe.src;
-        // if (iframeSrc != null) {
-        //   window.open(iframeSrc, '_blank');
+        console.log(iframeSrc)
+        // if (iframeSrc == "") {
+        //   document.getElementById('arrow').style.display='none'
         // } else {
-        //   console.error('The iframe does not have a valid source URL.');
+          document.getElementById('arrow').style.display='block'
         // }
+        
       });
 
+      setTimeout(function() {
+        document.getElementById('arrow').style.display='none'
+      }, 20*1000);
+
     </script>
-  </main>
+  
   
   <script src="/docs/5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 
