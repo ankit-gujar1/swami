@@ -37,6 +37,12 @@
     #arrow {
   display: none;
 }
+#play{
+  display: none;
+}
+#txt{
+  display: none;
+}
   </style>
 </head>
 
@@ -56,12 +62,26 @@
     <br><br>
     
     </div>
-    <div class="ratio ratio-16x9">
+    <div id="play" class="ratio ratio-16x9">
       <iframe id="player" width="560" height="315" class="embed-responsive-item" src="" autoplay allowfullscreen></iframe>
     </div>
 
-    <div id="arrow" class="text-end">
+    <!-- <div id="arrow" class="text-end">
       <img src="white-arrow-png-41951.png" class="mx-4" alt="Responsive image">
+    </div> -->
+    <div>
+      <div class="row">
+        <div class="col">
+          <div id="txt" class="text-end">
+            <p class="lead fs-1 fw-bold pt-4">*for fullscreen</p>
+          </div>
+        </div>
+        <div class="col">
+          <div id="arrow" class="text-start">
+            <img src="white-arrow-png-41951.png" alt="Responsive image">
+          </div>
+        </div>
+      </div>
     </div>
     </main>
     <script>
@@ -75,17 +95,22 @@
         document.getElementById('player').src = embedUrl;
         const iframe = document.getElementById('player');
         const iframeSrc = iframe.src;
-        console.log(iframeSrc)
+        document.getElementById('play').style.display='block'
         // if (iframeSrc == "") {
         //   document.getElementById('arrow').style.display='none'
         // } else {
           document.getElementById('arrow').style.display='block'
+          document.getElementById('txt').style.display='block'
         // }
         
       });
 
       setTimeout(function() {
         document.getElementById('arrow').style.display='none'
+      }, 20*1000);
+
+      setTimeout(function() {
+        document.getElementById('txt').style.display='none'
       }, 20*1000);
 
     </script>
