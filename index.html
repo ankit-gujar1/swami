@@ -97,7 +97,9 @@
         event.preventDefault();
         const searchInput = document.getElementById('searchInput').value;
         const myArray = searchInput.split("e/");
-        const Id = myArray[1].split("?si");;
+        const myArray = searchInput.split("v=");
+        const Id = myArray[1].split("?si");
+        const Id = myArray[1].split("&list");
         const videoId=Id[0];
         const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&fullscreen=1`;
         document.getElementById('player').src = embedUrl;
