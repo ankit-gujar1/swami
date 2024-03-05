@@ -97,10 +97,10 @@
         event.preventDefault();
         const searchInput = document.getElementById('searchInput').value;
         const myArray = searchInput.split("e/");
-        const myArray = searchInput.split("watch?v=");
+       //const myArray = searchInput.split("watch?v=");
         const Id = myArray[1].split("?si");
-        const Id = myArray[1].split("&list");
-        const videoId=myArray[0];
+        //const Id = myArray[1].split("&list");
+        const videoId=Id[0];
         const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&fullscreen=1`;
         document.getElementById('player').src = embedUrl;
         const iframe = document.getElementById('player');
